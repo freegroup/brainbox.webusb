@@ -46,7 +46,7 @@ the WebUSB descriptor (and Microsoft OS Descriptor 2.0) reading sequence starts.
 
 5. Launch the Arduino IDE. You should see "WebUSB" as an option under "Sketch > Include Library".
 
-6. Load up `arduino/ledlight/ledlight.ino` and program it to your device.
+6. Load up [arduino/brainbox.ino](arduino/brainbox.ino) and program it to your device.
 
 ### Install the Arduino demo sketch
 Load up `arduino/brainbox.ino` and program it to your device.
