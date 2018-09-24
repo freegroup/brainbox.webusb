@@ -1,4 +1,4 @@
-# brainbox-webusb-arduino
+# WebUSB + Arduino + Brainbox
 
 [![WebUSB](http://img.youtube.com/vi/0lGBe4qoYWE/0.jpg)](https://www.youtube.com/watch?v=0lGBe4qoYWE "WebUSB")
 
