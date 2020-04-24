@@ -29,7 +29,7 @@
 // WebUSB WebUSBSerial(0, "localhost:7400/circuit/?tutorial=pairWebUSB");
 
 // for productive ( 1 = HTTPS, 0 = HTTP) HTTP is only allowed for "localhost".
-WebUSB WebUSBSerial(1, "freegroup.github.io/brainbox/circuit/?tutorial=pairWebUSB");
+WebUSB WebUSBSerial(1, "www.brainbox-demo.de/circuit/?global=/guides/PairWebUSB.brain");
 #define Serial WebUSBSerial
 
 unsigned long serialdata;
