@@ -17,6 +17,8 @@
     '1/2/7/0/' would turn pin 7 to LOW
     '1/1/7/255/' would turn pin 7 on at a analog rate of 255 or full power
 
+analog pin numbers 
+https://github.com/arduino/ArduinoCore-avr/blob/master/variants/standard/pins_arduino.h#L56-L72
 */
 
 // keep in mind to update the line `#define USB_VERSION 0x200` and change `0x200` to `0x210`.
@@ -26,10 +28,10 @@
 #include <WebUSB.h>
 
 // for local server development
-// WebUSB WebUSBSerial(0, "localhost:7400/circuit/?tutorial=pairWebUSB");
+WebUSB WebUSBSerial(0, "localhost:7400/circuit/?global=guides/PairWebUSB.brain");
 
 // for productive ( 1 = HTTPS, 0 = HTTP) HTTP is only allowed for "localhost".
-WebUSB WebUSBSerial(1, "www.brainbox-demo.de/circuit/?global=guides/PairWebUSB.brain");
+//WebUSB WebUSBSerial(1, "www.brainbox-demo.de/circuit/?global=guides/PairWebUSB.brain");
 #define Serial WebUSBSerial
 
 unsigned long serialdata;
@@ -101,10 +103,13 @@ void loop() {
             {
               //analog read
               getSerial();
-              pinNumber = serialdata;
+              pinNumber = toAnalogPin(serialdata);
               pinMode(pinNumber, INPUT);
               sensorVal = analogRead(pinNumber);
-              Serial.println(sensorVal);
+              Serial.print(serialdata);
+              Serial.print("/");
+              Serial.print(sensorVal);
+              Serial.println("/");
               sensorVal = 0;
               pinNumber = 0;
               break;
@@ -116,7 +121,10 @@ void loop() {
               pinNumber = serialdata;
               pinMode(pinNumber, INPUT);
               sensorVal = digitalRead(pinNumber);
-              Serial.println(sensorVal);
+              Serial.print(pinNumber);
+              Serial.print("/");
+              Serial.print(sensorVal);
+              Serial.println("/");
               sensorVal = 0;
               pinNumber = 0;
               break;
@@ -127,6 +135,19 @@ void loop() {
   }
 }
 
+int toAnalogPin(int nr){
+  switch(nr){
+    case 14: return A0;
+    case 15: return A1;
+    case 16: return A2;
+    case 17: return A3;
+    case 18: return A4;
+    case 19: return A5;
+    case 20: return A6;
+    case 21: return A7;
+  }
+  return A0;
+}
 
 long getSerial()
 {
